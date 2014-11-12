@@ -1,0 +1,26 @@
+<project name="FuzzyFan" default="compile" basedir=".">
+    <description>
+        Build the Fuzzy Fan.
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+
+  <target name="init">
+    <tstamp/>
+    <mkdir dir="${bin}"/>
+  </target>
+
+  <target name="compile" depends="init" description="compiles the shit.">
+    <javac srcdir="${src}" destdir="${bin}"/>
+    <jar jarfile="${bin}/FuzzyFan-${DSTAMP}.jar" basedir="${bin}">
+	   	<manifest>
+	      <attribute name="Main-Class" value="start.Start"/>
+	    </manifest>
+	  </jar>
+  </target>
+
+  <target name="clean" description="clean up" >
+    <delete dir="${bin}"/>
+  </target>
+</project>

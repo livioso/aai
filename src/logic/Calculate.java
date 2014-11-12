@@ -62,7 +62,7 @@ public class Calculate
 
 
 		    double[] LOW = manager.getFanSpeed().getLOW();
-		    double[] MED = nmanager.getFanSpeed().getMED();
+		    double[] MED = manager.getFanSpeed().getMED();
 		    double[] HIGH = manager.getFanSpeed().getHIGH();
 		    R=DoInferEngine(FS_LOW,  LOW, R);
 		    O=GetMaximum(R, O, O);
