@@ -30,6 +30,6 @@
 
   <target name="clean" description="Clean up." >
     <delete dir="${bin}"/>
-    <mkdir dir="${dist}"/>
+    <delete dir="${dist}"/>
   </target>
 </project>
