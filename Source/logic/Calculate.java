@@ -27,14 +27,14 @@ public class Calculate
 		System.out.println("TEMP: "+T_COOL+"<->"+T_WARM+"<->"+T_HOT);
 		System.out.println("HUM: "+H_WET+"<->"+H_MOIST+"<->"+H_DRY);
 
-	    /* initialize output membership values.. */
+	  /* initialize output membership values.. */
 
 		double FS_LOW  = 0.0;
 		double FS_MED  = 0.0;
 		double FS_HIGH = 0.0;
 
 		/* The following executes the rule base used for
-		    *  the Fuzzy Logic Expert FAN Controller. This algorithm
+		    * the Fuzzy Logic Expert FAN Controller. This algorithm
 		    * is based on the "max product" implication. */
 
 		    /* IF H = WET THEN FS = HIGH                 */
@@ -57,13 +57,13 @@ public class Calculate
 
 		    /* IF T = HOT AND H = MOIST THEN FS = HIGH   */
 		    FS_HIGH = max(T_HOT*H_MOIST,  FS_HIGH);
-		    double[] R  =new double[manager.getFanSpeed().getLOW().length];               /* R[] - interm inference result        */
-		    double[] O  =new double[manager.getFanSpeed().getLOW().length];              /* O[] - accumulative inference result  */
+		    double[] R = new double[manager.getFanSpeed().getLOW().length];               /* R[] - interm inference result        */
+		    double[] O = new double[manager.getFanSpeed().getLOW().length];              /* O[] - accumulative inference result  */
 
 
-		    double[] LOW=manager.getFanSpeed().getLOW();
-		    double[] MED=manager.getFanSpeed().getMED();
-		    double[] HIGH=manager.getFanSpeed().getHIGH();
+		    double[] LOW = manager.getFanSpeed().getLOW();
+		    double[] MED = nmanager.getFanSpeed().getMED();
+		    double[] HIGH = manager.getFanSpeed().getHIGH();
 		    R=DoInferEngine(FS_LOW,  LOW, R);
 		    O=GetMaximum(R, O, O);
 
@@ -78,22 +78,6 @@ public class Calculate
 		    manager.setFanValue(output);
 		    System.out.println(FS_LOW+"<.>"+FS_MED+"<->"+FS_HIGH);
 		    manager.setFan_LOW_MED_HIGH_VALUES(new double[]{FS_LOW,FS_MED,FS_HIGH});
-		    /*
-		    System.out.println(FS_LOW+"<.>"+FS_MED+"<->"+FS_HIGH);
-
-		    double[] highest=getHighest(FS_LOW,FS_MED,FS_HIGH);
-
-		    //
-		    if(highest[0]==1)
-		    {
-		    	if(FS_LOW!=0.0){highest[0]=0;highest[1]=FS_LOW;}
-		    	else if(FS_HIGH!=0.0){highest[0]=2;highest[1]=FS_HIGH;}
-		    }
-
-		    double xValue=getValueForFanSpeed(highest);
-		    System.out.println("--FANVALUE->"+xValue);
-		    manager.setFanValue(xValue);
-		    */
 	}
 
 	private double DeFuzzyOutput(double[] Y, double[] B)
