@@ -36,11 +36,11 @@ public class Instruction extends JPanel {
 		int step=15;
 		int xpos=0;
 		g.setColor(Color.WHITE);
-		g.drawString("FUZZY FAN CONTROLLER",xpos ,10);
-		g.drawString("Increase Temperature      -Cursor UP",xpos, start+=step);
-		g.drawString("Decrease Temperature    -Cursor DOWN",xpos, start+=step);
-		g.drawString("Increase Humidity              -Cursor LEFT",xpos, start+=step);
-		g.drawString("Decrease Humidity            -CursorRIGHT",xpos, start+=step);
-		g.drawString("Quit program                       -Q,q",xpos, start+=step);
+		g.drawString("Fuzzy Fan Controls: ",xpos ,10);
+		g.drawString("<Cursor Up> Increase Temperature ",xpos, start+=step);
+		g.drawString("<Cursor Down> Decrease Temperature",xpos, start+=step);
+		g.drawString("<Cursor Left> Increase Humidity",xpos, start+=step);
+		g.drawString("<Cursor Right> Decrease Humidity",xpos, start+=step);
+		g.drawString("<q> Quit program",xpos, start+=step);
 	}
 }
